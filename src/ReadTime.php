@@ -43,7 +43,6 @@ class ReadTime
      */
     public function parse($content, string $locale = null, array $options = []): self
     {
-
         if (is_array($content)) {
             $content = implode(' ', $content);
         }
@@ -67,6 +66,20 @@ class ReadTime
     }
 
     /**
+     * @return string|null
+     */
+    public function get(): ?string
+    {
+        if ($this->isNull) {
+            return null;
+        }
+
+        $class = config("read-time.locales.{$this->locale}", En::class);
+
+        return app($class)->result($this->number, $this->unit);
+    }
+
+    /**
      * @param array $options
      *
      * @return array
@@ -81,27 +94,12 @@ class ReadTime
      *
      * @return string
      */
-    public function locale(string $locale = null): string
+    protected function locale(string $locale = null): string
     {
         return is_null($locale)
             ? app()->getLocale()
             : $locale;
     }
-
-    /**
-     * @return string|null
-     */
-    public function get(): ?string
-    {
-        if ($this->isNull) {
-            return null;
-        }
-
-        $class = config("read-time.locales.{$this->locale}", En::class);
-
-        return app($class)->result($this->number, $this->unit);
-    }
-
 
     /**
      * @param int   $words

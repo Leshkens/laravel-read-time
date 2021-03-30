@@ -7,7 +7,10 @@ namespace Leshkens\LaravelReadTime\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class ReadtimeFacade
+ * Class ReadTimeFacade
+ *
+ * @method static self        parse($content, string $locale = null, array $options = [])
+ * @method static string|null get()
  *
  * @package Leshkens\LaravelReadTime
  */
