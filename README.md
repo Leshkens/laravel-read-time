@@ -1,9 +1,9 @@
 # Laravel read time package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/leshkens/laravel-readtime.svg?style=flat-square)](https://packagist.org/packages/leshkens/laravel-readtime)
-[![Build Status](https://img.shields.io/travis/leshkens/laravel-readtime/master.svg?style=flat-square)](https://travis-ci.org/leshkens/laravel-readtime)
-[![Quality Score](https://img.shields.io/scrutinizer/g/leshkens/laravel-readtime.svg?style=flat-square)](https://scrutinizer-ci.com/g/leshkens/laravel-readtime)
-[![Total Downloads](https://img.shields.io/packagist/dt/leshkens/laravel-readtime.svg?style=flat-square)](https://packagist.org/packages/leshkens/laravel-readtime)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/leshkens/laravel-read-time.svg?style=flat-square)](https://packagist.org/packages/leshkens/laravel-read-time)
+[![Build Status](https://img.shields.io/travis/leshkens/laravel-read-time/master.svg?style=flat-square)](https://travis-ci.org/leshkens/laravel-read-time)
+[![Quality Score](https://img.shields.io/scrutinizer/g/leshkens/laravel-read-time.svg?style=flat-square)](https://scrutinizer-ci.com/g/leshkens/laravel-read-time)
+[![Total Downloads](https://img.shields.io/packagist/dt/leshkens/laravel-read-time.svg?style=flat-square)](https://packagist.org/packages/leshkens/laravel-read-time)
 
 
 ## Installation
