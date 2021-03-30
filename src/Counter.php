@@ -9,7 +9,7 @@ use Leshkens\LaravelReadTime\Contracts\Counterable;
 /**
  * Class Counter
  *
- * @package Leshkens\LaravelReadtime\Counter
+ * @package Leshkens\LaravelReadTime\Counter
  */
 class Counter implements Counterable
 {

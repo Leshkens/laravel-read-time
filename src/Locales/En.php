@@ -7,6 +7,11 @@ namespace Leshkens\LaravelReadTime\Locales;
 use Illuminate\Support\Str;
 use Leshkens\LaravelReadTime\Contracts\Localeable;
 
+/**
+ * Class En
+ *
+ * @package Leshkens\LaravelReadTime\Locales
+ */
 class En implements Localeable
 {
     /**

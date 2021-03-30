@@ -7,7 +7,7 @@ namespace Leshkens\LaravelReadTime\Contracts;
 /**
  * Interface Localeable
  *
- * @package Leshkens\LaravelReadtime\Contracts
+ * @package Leshkens\LaravelReadTime\Contracts
  */
 interface Localeable
 {

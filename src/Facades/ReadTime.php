@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class ReadtimeFacade
  *
- * @package Leshkens\LaravelReadtime
+ * @package Leshkens\LaravelReadTime
  */
 class ReadTime extends Facade
 {

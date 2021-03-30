@@ -7,7 +7,7 @@ namespace Leshkens\LaravelReadTime\Contracts;
 /**
  * Interface CounterInterface
  *
- * @package Leshkens\LaravelReadtime\Counter
+ * @package Leshkens\LaravelReadTime\Counter
  */
 interface Counterable
 {

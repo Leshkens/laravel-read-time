@@ -7,6 +7,11 @@ namespace Leshkens\LaravelReadTime\Providers;
 use Illuminate\Support\ServiceProvider;
 use Leshkens\LaravelReadTime\ReadTime;
 
+/**
+ * Class ReadTimeServiceProvider
+ *
+ * @package Leshkens\LaravelReadTime\Providers
+ */
 class ReadTimeServiceProvider extends ServiceProvider
 {
     /**
@@ -14,37 +19,11 @@ class ReadTimeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-readtime');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-readtime');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__
                 . '/../../config/config.php' => config_path('read-time.php'),
             ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-readtime'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-readtime'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-readtime'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
         }
     }
 

@@ -10,7 +10,7 @@ use Leshkens\LaravelReadTime\Locales\En;
 /**
  * Class ReadTime
  *
- * @package Leshkens\LaravelReadtime
+ * @package Leshkens\LaravelReadTime
  */
 class ReadTime
 {
