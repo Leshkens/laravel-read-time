@@ -17,7 +17,7 @@ if (!function_exists('readtime')) {
         array $options = []
     ): string
     {
-        return ReadTime::parse($content, $locale, $options)
-            ->get();
+        return ReadTime::parse($content, $options)
+            ->get($locale);
     }
 }

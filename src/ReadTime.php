@@ -20,11 +20,6 @@ class ReadTime
     protected $isNull = false;
 
     /**
-     * @var string
-     */
-    protected $locale;
-
-    /**
      * @var int|null
      */
     public $number;
@@ -36,12 +31,11 @@ class ReadTime
 
     /**
      * @param string|array|null $content
-     * @param string|null       $locale
      * @param array             $options
      *
      * @return self
      */
-    public function parse($content, string $locale = null, array $options = []): self
+    public function parse($content, array $options = []): self
     {
         if (is_array($content)) {
             $content = implode(' ', $content);
@@ -60,21 +54,27 @@ class ReadTime
         $words = $this->wordsCount($content);
 
         $this->calculate($words, $options);
-        $this->locale = $this->locale($locale);
 
         return $this;
     }
 
+
     /**
+     * @param string|null $locale
+     *
      * @return string|null
      */
-    public function get(): ?string
+    public function get(string $locale = null): ?string
     {
         if ($this->isNull) {
             return null;
         }
 
-        $class = config("read-time.locales.{$this->locale}", En::class);
+        $locale = is_null($locale)
+            ? app()->getLocale()
+            : $locale;
+
+        $class = config("read-time.locales.{$locale}", En::class);
 
         return app($class)->result($this->number, $this->unit);
     }
@@ -116,12 +116,15 @@ class ReadTime
         $units = $options['units'];
 
         foreach (array_reverse($units) as $unit => $value) {
-            if (($seconds === 0 ? 1 : $seconds) >= $value) {
+
+            if ($seconds >= $value) {
+                $value = $value === 0 ? ++$value : $value;
                 $this->number = (int) ceil($seconds / $value);
                 $this->unit = $unit;
                 break;
             }
         }
+
     }
 
     /**

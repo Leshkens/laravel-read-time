@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class ReadTimeFacade
  *
- * @method static self        parse($content, string $locale = null, array $options = [])
- * @method static string|null get()
+ * @method static self        parse($content, array $options = [])
+ * @method static string|null get(string $locale = null)
  *
  * @package Leshkens\LaravelReadTime
  */

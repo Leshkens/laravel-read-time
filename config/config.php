@@ -10,11 +10,11 @@ return [
         'strip_tags'       => false,
         'units'            => [
             /*
-             * Time units in seconds which seconds will be converted to
+             * How many seconds does a new unit start with
              */
-            'second' => 1,
+            'second' => 0,
             'minute' => 60,
-            'hour'   => 3600
+            //'hour'   => 3600
         ]
     ],
 
