@@ -3,6 +3,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/leshkens/laravel-read-time.svg?style=flat-square)](https://packagist.org/packages/leshkens/laravel-read-time)
 [![Total Downloads](https://img.shields.io/packagist/dt/leshkens/laravel-read-time.svg?style=flat-square)](https://packagist.org/packages/leshkens/laravel-read-time)
 
+A package for laravel that shows users the approximate time to read content.
+
 ![img.png](https://user-images.githubusercontent.com/8939383/113155120-24f5e380-9252-11eb-95ec-402f4cf3a2e4.png)
 
 ### Requirements
