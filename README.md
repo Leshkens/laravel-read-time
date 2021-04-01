@@ -25,9 +25,8 @@ composer require leshkens/laravel-read-time
 php artisan vendor:publish --provider="Leshkens\LaravelReadTime\Providers\ReadTimeServiceProvider"
 ```
 
-## Config file 
+## Config file `config/read-time.php`
 
-`config/read-time.php`
 
 ### Global options:
 
@@ -42,7 +41,7 @@ php artisan vendor:publish --provider="Leshkens\LaravelReadTime\Providers\ReadTi
     
     // How many seconds does a new unit start with
     'units' => [
-        'second' => 1,
+        'second' => 0,
         'minute' => 60,
         //'hour'   => 3600
     ]
@@ -50,7 +49,7 @@ php artisan vendor:publish --provider="Leshkens\LaravelReadTime\Providers\ReadTi
 
 ```
 
-### Word counter class:
+### Word counter class
 
 ``` php 
 'counter' => Leshkens\LaravelReadTime\Counter::class,
@@ -58,7 +57,7 @@ php artisan vendor:publish --provider="Leshkens\LaravelReadTime\Providers\ReadTi
 You can use your class and logic in word counting. 
 Your class must implement the `Leshkens\LaravelReadTime\Contracts\Counterable` interface. The logic should be in the `count()` method.
 
-For example, this is what a standard word counter looks like:
+For example, this is what a standard word counter logic looks like:
 ``` php 
 public function count(string $content): int
 {
@@ -66,7 +65,7 @@ public function count(string $content): int
 }
 ```
 
-### Locale list:
+### Locale list
 
 List of locales for forming the string "time to read":
 ``` php 
@@ -116,7 +115,7 @@ use Illuminate\Support\Str;
 use Leshkens\LaravelReadTime\Facades\ReadTime;
 
 $readTime = ReadTime::parse('Lorem ipsum dolor sit amet, consectetur adipiscing elit...');
-// OR array
+// Or array
 $readTime = ReadTime::parse(['Lorem ipsum dolor sit amet', 'consectetur adipiscing elit']);
 
 $number = $readTime->number; // 3
@@ -141,12 +140,15 @@ $options = [
     ]
 ];
 
-ReadTime::parse('Lorem ipsum dolor sit amet, consectetur adipiscing elit...', $options);
-...
-```
-With these settings, the code above will output:
-`480 seconds on read`
+$readTime = ReadTime::parse('Lorem ipsum dolor sit amet, consectetur adipiscing elit...', $options);
 
+$number = $readTime->number; // 3
+$unit   = $readTime->unit;   // second
+
+$result = Str::plural($unit, $number);
+
+return "{$number} {$result} on read"; // 480 seconds on read
+```
 ### String
 
 Just add the `get()` method.
@@ -182,8 +184,10 @@ class Article extends Model
     protected function readTime(): array
     {
         return [
-            // Attribute for parse
-            'source' => 'content',     
+            // Attribute for parse. You can split it with 
+            // a dot (e.g 'content.text') if the desired 
+            // attribute is inside a array or json
+            'source' => 'content',
                     
             // No required. If this key is not present, then the current application locale is taken.
             'locale' => 'en',      

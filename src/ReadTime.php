@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Leshkens\LaravelReadTime;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Leshkens\LaravelReadTime\Locales\En;
 
@@ -37,18 +38,12 @@ class ReadTime
      */
     public function parse($content, array $options = []): self
     {
-        if (is_array($content)) {
-            $content = implode(' ', $content);
-        }
+        $options = $this->options($options);
+
+        $content = $this->parseContent($content, $options);
 
         if (is_null($content)) {
             $this->isNull = true;
-        }
-
-        $options = $this->options($options);
-
-        if ($options['strip_tags']) {
-            $content = strip_tags($content);
         }
 
         $words = $this->wordsCount($content);
@@ -73,10 +68,40 @@ class ReadTime
         $locale = is_null($locale)
             ? app()->getLocale()
             : $locale;
-
         $class = config("read-time.locales.{$locale}", En::class);
 
         return app($class)->result($this->number, $this->unit);
+    }
+
+    /**
+     * @param       $content
+     * @param array $options
+     *
+     * @return string|null
+     */
+    protected function parseContent($content, array $options): ?string
+    {
+
+        if (is_array($content)) {
+
+            $arr = [];
+
+            foreach ($content as $item) {
+                if (!is_null($item)) {
+                    $arr[] = $item;
+                }
+            }
+
+            $content = !count($arr)
+                ? null
+                : implode(' ', $arr);
+        }
+
+        if (Arr::get($options, 'strip_tags', false)) {
+            $content = strip_tags($content);
+        }
+
+        return $content;
     }
 
     /**
@@ -116,7 +141,6 @@ class ReadTime
         $units = $options['units'];
 
         foreach (array_reverse($units) as $unit => $value) {
-
             if ($seconds >= $value) {
                 $value = $value === 0 ? ++$value : $value;
                 $this->number = (int) ceil($seconds / $value);

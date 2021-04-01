@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Leshkens\LaravelReadTime\Traits;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 /**
  * Trait HasReadTime
@@ -25,38 +26,42 @@ trait HasReadTime
     {
         $settings = $this->readTime();
 
+        throw_if(!isset($settings['source']), 'Source target is required.');
+
         $source = $settings['source'];
-        $options = $settings['options'] ?? [];
 
-        $value = $this->$source;
+        $options = Arr::get($settings, 'options', []);
 
-        if (is_null($value)) {
-            return null;
-        }
+        $value = Str::contains($source, '.')
+            ? $this->{pull_first_substr($source)}
+            : $this->$source;
 
-        if (isset($settings['localable']) && $settings['localable']) {
+        if (is_string($value)) {
+            $decoded = json_decode($value, true);
 
-            $arr = is_array($value)
-                ? $value
-                : json_decode($value, true);
-
-            throw_if(
-                json_last_error() !== 0,
-                "Attribute '{$source}' is not array or correct json."
-            );
-
-            $attribute = [];
-
-            foreach ($arr as $locale => $value) {
-                $attribute[$locale] = readtime($value, $locale, $options);
+            if (json_last_error() === 0) {
+                $value = $decoded;
             }
-
-            return $attribute;
         }
 
-        $locale = $settings['locale'] ?? null;
+        if (is_array($value)) {
+
+            $value = Arr::get($value, $source, $value);
+
+            if (is_array($value) && Arr::get($settings, 'localable', false)) {
+
+                $result = $value;
+
+                foreach ($result as $locale => $value) {
+                    $result[$locale] = readtime($value, $locale, $options);
+                }
+
+                return $result;
+            }
+        }
+
+        $locale = Arr::get($settings, 'locale');
 
         return readtime($value, $locale, $options);
     }
-
 }
