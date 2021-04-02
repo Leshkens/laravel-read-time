@@ -81,7 +81,6 @@ class ReadTime
      */
     protected function parseContent($content, array $options): ?string
     {
-
         if (is_array($content)) {
 
             $arr = [];
@@ -148,7 +147,6 @@ class ReadTime
                 break;
             }
         }
-
     }
 
     /**
