@@ -2,7 +2,6 @@
     "name": "leshkens/laravel-read-time",
     "description": "A package for laravel framework that shows users the approximate time to read content.",
     "keywords": [
-        "leshkens",
         "achugunov",
         "laravel-read-time",
         "laravel",
@@ -20,7 +19,7 @@
     "authors": [
         {
             "name": "Alexey Chugunov",
-            "email": "Leshkens@gmail.com",
+            "email": "web@achugunov.ru",
             "homepage": "https://web.achugunov.ru",
             "role": "Developer"
         }
