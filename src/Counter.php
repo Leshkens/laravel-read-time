@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Leshkens\LaravelReadTime;
 
-use Leshkens\LaravelReadTime\Contracts\Counterable;
+use Leshkens\LaravelReadTime\Contracts\CounterInterface;
 
 /**
  * Class Counter
  *
  * @package Leshkens\LaravelReadTime\Counter
  */
-class Counter implements Counterable
+class Counter implements CounterInterface
 {
     /**
      * @param string $content

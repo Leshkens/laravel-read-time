@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Leshkens\LaravelReadTime\Locales;
 
 use Illuminate\Support\Str;
-use Leshkens\LaravelReadTime\Contracts\Localeable;
+use Leshkens\LaravelReadTime\Contracts\LocaleInterface;
 
 /**
  * Class En
  *
  * @package Leshkens\LaravelReadTime\Locales
  */
-class En implements Localeable
+class En implements LocaleInterface
 {
     /**
      * @param int    $number

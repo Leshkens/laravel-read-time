@@ -9,7 +9,7 @@ namespace Leshkens\LaravelReadTime\Contracts;
  *
  * @package Leshkens\LaravelReadTime\Counter
  */
-interface Counterable
+interface CounterInterface
 {
     /**
      * @param string $content

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Leshkens\LaravelReadTime\Contracts;
 
 /**
- * Interface Localeable
+ * Interface LocaleInterface
  *
  * @package Leshkens\LaravelReadTime\Contracts
  */
-interface Localeable
+interface LocaleInterface
 {
     /**
      * @param int    $number
