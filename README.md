@@ -80,7 +80,7 @@ For example, let's add the Ru locale class:
 ``` php 
 namespace App\Support\ReadTimeLocales;
 
-use Leshkens\LaravelReadTime\Contracts\Localeable;
+use Leshkens\LaravelReadTime\Contracts\LocaleInterface;
 use function morphos\Russian\pluralize;
 
 class Ru implements LocaleInterface
