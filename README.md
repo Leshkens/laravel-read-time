@@ -55,7 +55,7 @@ php artisan vendor:publish --provider="Leshkens\LaravelReadTime\Providers\ReadTi
 'counter' => Leshkens\LaravelReadTime\Counter::class,
 ```
 You can use your class and logic in word counting. 
-Your class must implement the `Leshkens\LaravelReadTime\Contracts\Counterable` interface. The logic should be in the `count()` method.
+Your class must implement the `Leshkens\LaravelReadTime\Contracts\CounterInterface` interface. The logic should be in the `count()` method.
 
 For example, this is what a standard word counter logic looks like:
 ``` php 
@@ -73,7 +73,7 @@ List of locales for forming the string "time to read":
     'en' => Leshkens\LaravelReadTime\Locales\En::class
 ]
 ```
-Locale class must implement the `Leshkens\LaravelReadTime\Contracts\Localeable` interface. The logic should be in the `result()` method.
+Locale class must implement the `Leshkens\LaravelReadTime\Contracts\LocaleInterface` interface. The logic should be in the `result()` method.
 
 For example, let's add the Ru locale class:
 
@@ -83,7 +83,7 @@ namespace App\Support\ReadTimeLocales;
 use Leshkens\LaravelReadTime\Contracts\Localeable;
 use function morphos\Russian\pluralize;
 
-class Ru implements Localeable
+class Ru implements LocaleInterface
 {
     protected $unitMap = [
         'second' => 'секунда',
