@@ -13,7 +13,7 @@ if (!function_exists('readtime')) {
      */
     function readtime(
         $content,
-        string $locale = null,
+        ?string $locale = null,
         array $options = []
     ): ?string
     {
