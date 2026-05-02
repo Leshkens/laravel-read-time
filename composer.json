@@ -1,7 +1,7 @@
 {
     "name": "leshkens/laravel-read-time",
     "description": "A package for laravel framework that shows users the approximate time to read content.",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "keywords": [
         "achugunov",
         "laravel-read-time",
@@ -50,7 +50,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
